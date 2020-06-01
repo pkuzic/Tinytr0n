@@ -1,0 +1,21 @@
+{
+    "token" : "Njk3NzkwMzcyMzM1NzE0NDA0.Xo8acQ.6s1CPTzCX-Ku29xNGNR8_hYAsok",
+    "clientowner" : "clientid",
+    "botprefix" : "tt.",
+
+    "ptichkaname" : "Project Name",
+
+    "authhost" : "IP for Trinity Core connection",
+    "authuser" : "User for Trinity Core connection",
+    "authpassword" : "Pass for Trinity Core connection",
+    "authdatabase" : "DB for Trinity Core connection",
+
+    "discordhost" : "IP for Discord-guild DB connection",
+    "discorduser" : "User for Discord-guild DB connection",
+    "discordpassword" : "Pass for Discord-guild DB connection",
+    "discorddatabase" : "DB for Discord-guild DB connection",
+
+    "newbierole" : "id for newbie role",
+    "verifiedrole" : "id for verified user role",
+    "newbiechat" : "id for newbie chat"
+}
