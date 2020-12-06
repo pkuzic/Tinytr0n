@@ -103,7 +103,7 @@ module.exports = class loginnameCommand extends commando.Command {
                             } 
                             return commandoMsg.say(`В процессе регистрации произошла ошибка: ` + "``" + `${errorExplanation}` + "``")
                         } else {
-                            commandoMsg.say(`Отлично! Вот Ваши данные для входа на сервер игры —\nЛогин: ` + "``" + `${text.toUpperCase()}` + "``" +  `\nПароль: ` + "``" + `${generatedPassword.toUpperCase()}` + "``" +  `\nКод верификации: ` + "``" + `${verificationKey.toUpperCase()}` + "``, Вам нужно будет ввести его в игре при взаимодействии со стартовым квестгивером. Как только Вы это сделаете, напишите в чате #newbies ``" + config.botprefix + "verifyme``.")
+                            commandoMsg.say(`Отлично! Вот Ваши данные для входа на сервер игры —\nЛогин: ` + "``" + `${text.toUpperCase()}` + "``" +  `\nПароль: ` + "``" + `${generatedPassword.toUpperCase()}` + "``\nТеперь напишите в чате #регистрация ``" + config.botprefix + "verifyme``.")
                             discorddb.query(`UPDATE accounts SET stage = "2" WHERE memberid = "${commandoMsg.author.id}"`) //move to next stage (registered user)
                             
                             authdb.query(`SELECT id FROM account WHERE username = "${text.toUpperCase()}"`, function (err, results, fields) { //get the account id from the TrinityCore auth table, thus we can use it further
