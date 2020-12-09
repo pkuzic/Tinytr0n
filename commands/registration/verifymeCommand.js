@@ -35,8 +35,8 @@ module.exports = class verifymeCommand extends commando.Command {
     }
     async run(commandoMsg) { 
         var finalresults;
-       // console.log(`check 1` + finalresults + `\n`)
-
+       //console.log(`check 1` + finalresults + `\n`)
+       //check if the message was sent in DMs
         function getStage() {
             return new Promise(resolve => {
                 discorddb.query(`SELECT stage FROM accounts WHERE memberid = ${commandoMsg.author.id}`, function (err, results, fields) {
@@ -54,8 +54,8 @@ module.exports = class verifymeCommand extends commando.Command {
             commandoMsg.member.send(`Добро пожаловать, вы успешно верифицировались!`)
             discorddb.query(`UPDATE accounts SET stage = "3" WHERE memberid = "${commandoMsg.author.id}"`)
 
-            this.client.guilds.cache.get(`689418791289094190`).members.resolve(`${commandoMsg.author.id}`).roles.add(config.verifiedrole)
-            this.client.guilds.cache.get(`689418791289094190`).members.resolve(`${commandoMsg.author.id}`).roles.remove(config.newbierole)
+            this.client.guilds.cache.get(config.guildid).members.resolve(`${commandoMsg.author.id}`).roles.add(config.verifiedrole)
+            this.client.guilds.cache.get(config.guildid).members.resolve(`${commandoMsg.author.id}`).roles.remove(config.newbierole)
             //send a message to #general that the new member just has joined
             } else {
                 commandoMsg.author.send(`Вы не можете пройти верификацию!`)

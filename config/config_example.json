@@ -1,9 +1,10 @@
 {
-    "token" : "Njk3NzkwMzcyMzM1NzE0NDA0.Xo8acQ.6s1CPTzCX-Ku29xNGNR8_hYAsok",
+    "token" : "bot token",
     "clientowner" : "clientid",
     "botprefix" : "tt.",
 
-    "ptichkaname" : "Project Name",
+    "realmname" : "Realm Name",
+    "guildid" : "Discord Server Id",
 
     "authhost" : "IP for Trinity Core connection",
     "authuser" : "User for Trinity Core connection",
@@ -17,5 +18,6 @@
 
     "newbierole" : "id for newbie role",
     "verifiedrole" : "id for verified user role",
-    "newbiechat" : "id for newbie chat"
+    "newbiechat" : "id for newbie chat",
+    "generalchat" : "id for general chat. used for welcoming newly registered users"
 }
