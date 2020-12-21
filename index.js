@@ -79,7 +79,7 @@ client.on(`guildMemberAdd`, member => {
     console.log(`${member.user.tag} (${member.user.id}) has joined the server.`) //technical log
     member.roles.add(newbierole).catch(console.error);
     newbiechannel.send(`
-    <@${member.user.id}>, добро пожаловать на Discord-сервер ролевого проекта ${config.ptichkaname}.
+    <@${member.user.id}>, добро пожаловать на Discord-сервер ролевого проекта ${config.realmname}.
     \nЧтобы получить доступ к Discord-серверу и игровому аккаунту, введите в этом чате команду ` + "``" + `${config.botprefix}` + "register``" +  ` и следуйте инструкциям у себя в **личных сообщениях**.
     \nЕсли у Вас возникают проблемы с регистрацией, свяжитесь с одним из администраторов (список администраторов доступен справа в окне клиента чата).
     `)
