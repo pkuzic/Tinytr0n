@@ -49,7 +49,7 @@ module.exports = class registerCommand extends commando.Command {
                     console.log(`(${commandoMsg.content}): ${commandoMsg.member.user.tag} (${commandoMsg.member.user.id}) can't be found in the database, thus initiating registration.`)
                     discorddb.query(`INSERT INTO accounts (memberid, stage) VALUES (${commandoMsg.member.user.id}, 1)`)
                     
-                    return commandoMsg.author.send(`Благодарим Вас за проявленный интерес к нашему проекту. Для того, чтобы создать аккаунт на сервере, а так же получить полный доступ к нашему Discord-серверу, Вам потребуется придумать логин.\nВведите логин в форме ` + "``loginname логин``" + `.\n\n**Правила подбора логина:**\n1. 0-9, A-Z, и a-z.\n2. От 3 до 12 символов.\n2. Уникальность.`)
+                    return commandoMsg.author.send(`Благодарим Вас за проявленный к нашему проекту интерес. Чтобы создать игровой аккаунт и получить доступ к Discord-серверу, Вам потребуется придумать логин.\nВведите логин в форме ` + "``loginname логин``" + `.\n\n**Правила подбора логина:**\n1. 0-9, A-Z, и a-z.\n2. От 3 до 12 символов.\n2. Уникальность.`)
                 /* authdb.query(`INSERT INTO account (username, stage) VALUES (${commandoMsg.content}, 0)`),
                     discorddb.query(`UPDATE accounts WHERE memberid = ${commandoMsg.member.user.id} SET stage = 2`))*/
                 } else { //если не пусто, НО попрежнему имеется группа нуба, то кидаем такое сообщение

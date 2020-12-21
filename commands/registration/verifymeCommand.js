@@ -33,7 +33,7 @@ module.exports = class verifymeCommand extends commando.Command {
             guildOnly: true
         })
     }
-    async run(commandoMsg) { 
+    async run(commandoMsg) {
         var finalresults;
        //console.log(`check 1` + finalresults + `\n`)
        //check if the message was sent in DMs
@@ -49,9 +49,8 @@ module.exports = class verifymeCommand extends commando.Command {
 
         getStage(1).then(x => {
             //console.log(`check 4` + finalresults  + `\n`)
-            
             if (finalresults == `2`) { //See index.js guide section "stages"
-            commandoMsg.member.send(`Добро пожаловать, вы успешно верифицировались!`)
+            commandoMsg.member.send(`Поздравляем, вы успешно верифицировались!\nВойдя в игру, первым делом смените пароль, использовав команду \`.account password <старый пароль> <новый пароль>\``)
             discorddb.query(`UPDATE accounts SET stage = "3" WHERE memberid = "${commandoMsg.author.id}"`)
 
             this.client.guilds.cache.get(config.guildid).members.resolve(`${commandoMsg.author.id}`).roles.add(config.verifiedrole)
