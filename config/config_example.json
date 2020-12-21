@@ -6,15 +6,20 @@
     "realmname" : "Realm Name",
     "guildid" : "Discord Server Id",
 
-    "authhost" : "IP for Trinity Core connection",
-    "authuser" : "User for Trinity Core connection",
-    "authpassword" : "Pass for Trinity Core connection",
-    "authdatabase" : "DB for Trinity Core connection",
+    "authhost" : "IP for Trinity Core Auth DB connection",
+    "authuser" : "User for Trinity Core Auth DB connection",
+    "authpassword" : "Pass for Trinity Core Auth DB connection",
+    "authdatabase" : "DB for Trinity Core Auth DB connection",
 
     "discordhost" : "IP for Discord-guild DB connection",
     "discorduser" : "User for Discord-guild DB connection",
     "discordpassword" : "Pass for Discord-guild DB connection",
     "discorddatabase" : "DB for Discord-guild DB connection",
+	
+	"worldhost" : "IP for Trinity Core World DB connection",
+    "worlduser" : "IP for Trinity Core World DB connection",
+    "worldpassword" : "IP for Trinity Core World DB connection",
+    "worlddatabase" : "IP for Trinity Core World DB connection",
 
     "newbierole" : "id for newbie role",
     "verifiedrole" : "id for verified user role",
