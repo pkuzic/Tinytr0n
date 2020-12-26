@@ -29,7 +29,7 @@ module.exports = class registerCommand extends commando.Command {
             name: `pinfo`,
             group: `mod`,
             memberName: `pinfo`,
-            description: `Предоставляет данные о персонаже.`,
+            description: `Предоставляет данные о персонаже (администратору).`,
             throttling: {
                 usages: 1,
                 duration: 3
@@ -64,16 +64,16 @@ module.exports = class registerCommand extends commando.Command {
                                                     //additional logic for sensitive data (email, ip, last login)
                                                     authdb.query(`SELECT id FROM rbac_linked_permissions WHERE linkedid = ${rbac_sensitivePermissionId}`, function(err, results, fields) {
                                                         if (resolvedPermissionId <= results[0].id) { //compare user's permission id with required id
-                                                            setTimeout(() => resolve(`Timeout`), 2000);
+                                                            setTimeout(() => resolve(`Timeout`), 500);
                                                             return resolvedAccess = 1;
                                                         } else {
-                                                            setTimeout(() => resolve(`Timeout`), 2000);
+                                                            setTimeout(() => resolve(`Timeout`), 500);
                                                             return resolvedAccess = 2;
                                                         }
                                                     })
                                                 } else {
                                                     //No access
-                                                    setTimeout(() => resolve(`Timeout`), 2000);
+                                                    setTimeout(() => resolve(`Timeout`), 500);
                                                     return resolvedAccess = 0;
                                                 }
                                             })
@@ -96,6 +96,7 @@ module.exports = class registerCommand extends commando.Command {
                                     var playerLastLogin, playerLastIp, playerEmail, playerCharacterLastLogout;
                                     var playerCharacterActiveBan;
                                     var playerCharacterBannedBy, playerCharacterBanDate, playerCharacterUnbanDate, playerCharacterBanReason;
+                                    var playerCharscrolls = `N/A`
 
                                     function getUserData() { //from DBs other than world db or assign to variables 
                                         return new Promise(resolve => {
@@ -266,6 +267,7 @@ module.exports = class registerCommand extends commando.Command {
                                             //playerCharacterTotalTime
                                             worlddb.query(`SELECT totaltime FROM characters WHERE guid = ${playerGuid}`, function(err, results, fields) {
                                                 function secToTime(d) {
+                                                    console.log(d)
                                                     d = Number(results[0].totaltime);
                                                     var h = Math.floor(d / 3600);
                                                     var m = Math.floor(d % 3600 / 60);
@@ -281,8 +283,9 @@ module.exports = class registerCommand extends commando.Command {
                                         getUserData().then(x => {
                                             const embed = {
                                                 "title": `Игрок: ${playerUsername} (GM-уровень: ${playerGmLevel}), Discord-аккаунт: <@${playerDiscord}>`,
-                                                "color": 15105570,
+                                                "color": 15158332,
                                                 "footer": {
+                                                    "icon_url": "https://charscrolls.com/cot/img/logo.png",
                                                     "text": `Актуально на момент получения сообщения`
                                                 },
                                                 "thumbnail": {
@@ -296,7 +299,7 @@ module.exports = class registerCommand extends commando.Command {
                                                     "value": `Задержка: ${playerMs}ms\nСтатус: ${playerOnline}\nНаиграно: ${playerCharacterTotalTime}`
                                                 }, {
                                                     "name": "Персонаж",
-                                                    "value": `Раса: ${playerGender} ${playerRace}\nКласс: ${playerClass}\n${playerLevel} уровень\nОпыт: ${playerXp} xp\nДеньги: ${playerMoney}`,
+                                                    "value": `Раса: ${playerGender} ${playerRace}\nКласс: ${playerClass}\n${playerLevel} уровень\nОпыт: ${playerXp} xp\nДеньги: ${playerMoney}\nЧарлист на Charscrolls: ${playerCharscrolls}`,
                                                     "inline": true
                                                 }, {
                                                     "name": "PvP",
@@ -313,9 +316,10 @@ module.exports = class registerCommand extends commando.Command {
                                             })
                                             if (resolvedAccess == 1) {
                                                 const embed = {
-                                                    "color": 15105570,
+                                                    "color": 15158332,
                                                     "footer": {
-                                                        "text": `Актуально на момент получения сообщения`
+                                                        "text": `Актуально на момент получения сообщения`,
+                                                        "icon_url": "https://charscrolls.com/cot/img/logo.png"
                                                     },
                                                     "thumbnail": {
                                                         "url": `https://charscrolls.com/cot/img/${results[0].race}_${results[0].gender}.png`
@@ -337,7 +341,8 @@ module.exports = class registerCommand extends commando.Command {
                                                     "color": 15158332,
                                                     "description": `Заблокирован ${playerCharacterBannedBy}`,
                                                     "footer": {
-                                                        "text": "Актуально на момент получения сообщения"
+                                                        "text": "Актуально на момент получения сообщения",
+                                                        "icon_url": "https://charscrolls.com/cot/img/logo.png"
                                                     },
                                                     "thumbnail": {
                                                         "url": `https://charscrolls.com/cot/img/${results[0].race}_${results[0].gender}.png`
